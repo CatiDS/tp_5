@@ -1,24 +1,27 @@
-const express = require('express');
-var app = express();
-const morgan = require('morgan');
-const medicoBD = require("./modelos/medicosModel");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const express = require('express');
+const app = express();
+const morgan = require("morgan");
+
+
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 morgan(":method :url :status :res[content-length] - :response-time ms");
 
+const config = require("./config.json");
 
-app.get("/", (req, res) => {
-    res.send("Pagina de inicio funcionando perfectamente ...");
-});
+const medicoController = require("./controller/medicoController.js");
+app.use("/api/medico", medicoController);
+const pacienteController = require("./controller/pacienteController.js");
+app.use("/api/paciente", pacienteController);
+const ingresoController = require("./controller/ingresoController.js");
+app.use("/api/ingreso", ingresoController);
 
-
-app.listen(8080, (err) => {
+app.listen(config.server.port , (err) => {
     if (err) {
-        console.log(err);
-        return;
+      console.log(err);
     } else {
-        console.log("Servicio encendido escuchando en el puerto 8080");
+      console.log("Sevidor encendido y escuchando en el puerto " + config.server.port);
     }
-});
+  });

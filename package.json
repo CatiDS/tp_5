@@ -1,17 +1,17 @@
 {
   "name": "tp_5",
   "version": "1.0.0",
-  "description": "Trabajo Practico n°5 FullStack",
+  "description": "practico n°5 fullstack",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Comision 2024",
+  "author": "Catherine Do Santos",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemon": "^3.1.4"
+    "rootpath": "^0.1.2"
   }
 }
